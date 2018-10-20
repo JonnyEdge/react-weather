@@ -29,3 +29,15 @@ it('renders the correct amount of ForecastSummary components', () => {
 
   expect(wrapper.find(ForecastSummary).length).toEqual(2);
 });
+
+it('renders the date prop on a ForecastSummary component', () => {
+  const wrapper = Enzyme.shallow((
+    <ForecastSummaries forecasts={forecasts} />
+  ));
+
+
+  const date = wrapper.find('forecast-summary__date');
+  expect(date.prop('date')).toEqual(123);
+
+  // expect(wrapper.prop('date')).toEqual(123);
+});

@@ -1,3 +1,6 @@
 {
-  "extends": "mcr-codes/react"
+  "extends": "mcr-codes/react",
+  "rules": {
+    "linebreak-style": 0
+  }
 }
