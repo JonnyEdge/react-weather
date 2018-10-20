@@ -12,7 +12,14 @@ const App = props => (
       country={props.location.country}
     />
     <ForecastSummaries forecasts={props.forecasts} />
-    <ForecastDetails forecasts={props.forecasts[0]} />
+    <ForecastDetails
+      date={props.forecasts.date}
+      maxtemperature={props.forecasts.maxtemperature}
+      mintemperature={props.forecasts.mintemperature}
+      humidity={props.forecasts.humidity}
+      windspeed={props.forecasts.windspeed}
+      winddirection={props.forecasts.winddirection}
+    />
   </div>
 );
 
