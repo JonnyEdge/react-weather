@@ -13,12 +13,12 @@ const App = props => (
     />
     <ForecastSummaries forecasts={props.forecasts} />
     <ForecastDetails
-      date={props.forecasts.date}
-      maxtemperature={props.forecasts.maxtemperature}
-      mintemperature={props.forecasts.mintemperature}
-      humidity={props.forecasts.humidity}
-      windspeed={props.forecasts.windspeed}
-      winddirection={props.forecasts.winddirection}
+      date={props.forecasts[0].date}
+      maxtemperature={props.forecasts[0].temperature.max}
+      mintemperature={props.forecasts[0].temperature.min}
+      humidity={props.forecasts[0].humidity}
+      windspeed={props.forecasts[0].wind.speed}
+      winddirection={props.forecasts[0].wind.direction}
     />
   </div>
 );

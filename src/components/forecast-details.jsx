@@ -16,7 +16,7 @@ const ForecastDetails = props => (
 );
 
 ForecastDetails.propTypes = {
-  date: PropTypes.string,
+  date: PropTypes.number,
   maxtemperature: PropTypes.number,
   mintemperature: PropTypes.number,
   humidity: PropTypes.number,
