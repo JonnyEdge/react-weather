@@ -7,6 +7,7 @@ const ForecastSummaries = props => (
     {
       props.forecasts.map(forecast => (
         <ForecastSummary
+          onSelect={forecast.onForecastSelect}
           key={forecast.date}
           date={forecast.date}
           temperature={forecast.temperature.max}

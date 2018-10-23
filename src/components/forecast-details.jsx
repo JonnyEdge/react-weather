@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const moment = require('moment');
 
 const ForecastDetails = props => (
-  
+
   <div className="forecast-details">
     <div className="forecast-details__date">{moment(props.forecast.date).format('ddd Do MMM')}</div>
     <div className="forecast-details__maxtemperature">{props.forecast.temperature.max}</div>
