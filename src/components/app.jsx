@@ -12,16 +12,20 @@ const App = props => (
       country={props.location.country}
     />
     <ForecastSummaries forecasts={props.forecasts} />
-    <ForecastDetails
-      date={props.forecasts[0].date}
-      maxtemperature={props.forecasts[0].temperature.max}
-      mintemperature={props.forecasts[0].temperature.min}
-      humidity={props.forecasts[0].humidity}
-      windspeed={props.forecasts[0].wind.speed}
-      winddirection={props.forecasts[0].wind.direction}
-    />
+    <ForecastDetails forecast={props.forecasts[0]} />
   </div>
 );
+
+// const App = props => (
+//   <div className="forecast">
+//     <LocationDetails
+//       city={props.location.city}
+//       country={props.location.country}
+//     />
+//     <ForecastSummaries forecasts={props.forecasts} />
+//     <ForecastDetails forecast={props.forecasts[0]} />
+//   </div>
+// );
 
 App.propTypes = {
   location: PropTypes.shape({

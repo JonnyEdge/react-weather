@@ -6,12 +6,12 @@ const moment = require('moment');
 const ForecastDetails = props => (
   
   <div className="forecast-details">
-    <div className="forecast-details__date">{moment(props.date).format('ddd Do MMM')}</div>
-    <div className="forecast-details__maxtemperature">{props.maxtemperature}</div>
-    <div className="forecast-details__mintemperature">{props.mintemperature}</div>
-    <div className="forecast-details__humidity">{props.humidity}</div>
-    <div className="forecast-details__windspeed">{props.windspeed}</div>
-    <div className="forecast-details__winddirection">{props.winddirection}</div>
+    <div className="forecast-details__date">{moment(props.forecast.date).format('ddd Do MMM')}</div>
+    <div className="forecast-details__maxtemperature">{props.forecast.temperature.max}</div>
+    <div className="forecast-details__mintemperature">{props.forecast.temperature.min}</div>
+    <div className="forecast-details__humidity">{props.forecast.humidity}</div>
+    <div className="forecast-details__windspeed">{props.forecast.wind.speed}</div>
+    <div className="forecast-details__winddirection">{props.forecast.wind.direction}</div>
   </div>
 );
 
