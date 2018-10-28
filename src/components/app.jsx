@@ -62,7 +62,9 @@ class App extends React.Component {
           city={this.state.location.city}
           country={this.state.location.country}
         />
-        <SearchForm />
+        <SearchForm
+          searchLocationChange={this.searchLocationChange}
+        />
         <ForecastSummaries
           forecasts={this.state.forecasts}
           onForecastSelect={this.handleForecastSelect}
