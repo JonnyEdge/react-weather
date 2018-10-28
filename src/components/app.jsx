@@ -27,20 +27,21 @@ class App extends React.Component {
     });
   }
 
-  componentDidMount() {
-    Axios.get('https://mcr-codes-weather.herokuapp.com/forecast')
-      .then((response) => {
-        this.setState({
-          forecasts: response.data.forecasts,
-          location: {
-            city: response.data.location.city,
-            country: response.data.location.country,
-          },
-        });
-      });
-  }
+  // componentDidMount() {
+  //   Axios.get('https://mcr-codes-weather.herokuapp.com/forecast')
+  //     .then((response) => {
+  //       this.setState({
+  //         forecasts: response.data.forecasts,
+  //         location: {
+  //           city: response.data.location.city,
+  //           country: response.data.location.country,
+  //         },
+  //       });
+  //     });
+  // }
 
   searchLocationChange() {
+    console.log(this.state.searchText);
     Axios.get('https://mcr-codes-weather.herokuapp.com/forecast', {
       params: {
         city: this.state.searchText,
