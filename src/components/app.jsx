@@ -3,8 +3,8 @@ import LocationDetails from './location-details';
 import ForecastSummaries from './forecast-summaries';
 import '../styles/app.scss';
 import ForecastDetails from './forecast-details';
+import SearchForm from './search-form';
 import Axios from 'axios';
-import { relativeTimeThreshold } from 'moment';
 
 class App extends React.Component {
   constructor(props) {
@@ -18,6 +18,7 @@ class App extends React.Component {
       selectedDate: 0,
     };
     this.handleForecastSelect = this.handleForecastSelect.bind(this);
+    this.searchLocationChange = this.searchLocationChange.bind(this);
   }
 
   handleForecastSelect(date) {
@@ -39,6 +40,20 @@ class App extends React.Component {
       });
   }
 
+  searchLocationChange() {
+    const searchURL = 'https://mcr-codes-weather.herokuapp.com/forecast?city='`${this.state.searchText}`;
+    Axios.get(searchURL)
+      .then((response) => {
+        this.setState({
+          forecasts: response.data.forecasts,
+          location: {
+            city: response.data.location.city,
+            country: response.data.location.country,
+          },
+        });
+      });
+  }
+
   render() {
     const selectedForecast = this.state.forecasts.find(forecast => forecast.date === this.state.selectedDate);
     return (
@@ -47,6 +62,7 @@ class App extends React.Component {
           city={this.state.location.city}
           country={this.state.location.country}
         />
+        <SearchForm />
         <ForecastSummaries
           forecasts={this.state.forecasts}
           onForecastSelect={this.handleForecastSelect}
