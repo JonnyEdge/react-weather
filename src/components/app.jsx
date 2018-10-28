@@ -41,8 +41,11 @@ class App extends React.Component {
   }
 
   searchLocationChange() {
-    const searchURL = 'https://mcr-codes-weather.herokuapp.com/forecast?city='`${this.state.searchText}`;
-    Axios.get(searchURL)
+    Axios.get('https://mcr-codes-weather.herokuapp.com/forecast', {
+      params: {
+        city: this.state.searchText,
+      },
+    })
       .then((response) => {
         this.setState({
           forecasts: response.data.forecasts,
