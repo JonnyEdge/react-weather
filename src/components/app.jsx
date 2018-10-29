@@ -16,6 +16,7 @@ class App extends React.Component {
         country: '',
       },
       selectedDate: 0,
+      searchText: '',
     };
     this.handleForecastSelect = this.handleForecastSelect.bind(this);
     this.searchLocationChange = this.searchLocationChange.bind(this);
@@ -27,8 +28,26 @@ class App extends React.Component {
     });
   }
 
-  // componentDidMount() {
-  //   Axios.get('https://mcr-codes-weather.herokuapp.com/forecast')
+  componentDidMount() {
+    Axios.get('https://mcr-codes-weather.herokuapp.com/forecast')
+      .then((response) => {
+        this.setState({
+          forecasts: response.data.forecasts,
+          location: {
+            city: response.data.location.city,
+            country: response.data.location.country,
+          },
+        });
+      });
+  }
+
+  // searchLocationChange() {
+  //   console.log(this.state.searchText);
+  //   Axios.get('https://mcr-codes-weather.herokuapp.com/forecast', {
+  //     params: {
+  //       city: this.state.searchText,
+  //     },
+  //   })
   //     .then((response) => {
   //       this.setState({
   //         forecasts: response.data.forecasts,
@@ -40,11 +59,11 @@ class App extends React.Component {
   //     });
   // }
 
-  searchLocationChange() {
-    console.log(this.state.searchText);
+  searchLocationChange(searchText) {
+    console.log(searchText);
     Axios.get('https://mcr-codes-weather.herokuapp.com/forecast', {
       params: {
-        city: this.state.searchText,
+        city: searchText,
       },
     })
       .then((response) => {
@@ -56,7 +75,7 @@ class App extends React.Component {
           },
         });
       });
-  }
+    }
 
   render() {
     const selectedForecast = this.state.forecasts.find(forecast => forecast.date === this.state.selectedDate);

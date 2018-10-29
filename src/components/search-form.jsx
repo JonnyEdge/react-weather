@@ -15,13 +15,24 @@ class SearchForm extends React.Component {
   }
 
   render() {
-    return (
-      <span className="search-form">
-        <div className="search-form__input"><input type="text" value={this.state.searchText} onChange={this.handleInputChange} /></div>
-        <div className="search-form__submit"><button onClick={this.props.searchLocationChange}>Search</button></div>
-      </span>
-    );
-  }
+    const { searchText } = this.state;
+       return (
+         <span className="search-form">
+           <div className="search-form__input"><input type="text" value={this.state.searchText} onChange={this.handleInputChange} /></div>
+           <div className="search-form__submit"><button onClick={()=>{this.props.searchLocationChange(searchText)}}>Search</button></div>
+   
+         </span>
+       );
+     }
+  
+  // render() {
+  //   return (
+  //     <span className="search-form">
+  //       <div className="search-form__input"><input type="text" value={this.state.searchText} onChange={this.handleInputChange} /></div>
+  //       <div className="search-form__submit"><button onClick={this.props.searchLocationChange}>Search</button></div>
+  //     </span>
+  //   );
+  // }
 }
 
 export default SearchForm;
