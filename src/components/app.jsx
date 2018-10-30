@@ -60,7 +60,7 @@ class App extends React.Component {
   // }
 
   searchLocationChange(searchText) {
-    console.log(searchText);
+    // console.log(searchText);
     Axios.get('https://mcr-codes-weather.herokuapp.com/forecast', {
       params: {
         city: searchText,
@@ -74,8 +74,15 @@ class App extends React.Component {
             country: response.data.location.country,
           },
         });
+      })
+      .catch((error) => {
+        if (error.response.status === 404) {
+          alert(`Error code: ${error.response.status}. Location not found. Please enter a real British city.`);
+        } else if (error.response.status === 500) {
+          alert(`Error code: ${error.response.status}. Server error. Please try again later.`);
+        }
       });
-    }
+  }
 
   render() {
     const selectedForecast = this.state.forecasts.find(forecast => forecast.date === this.state.selectedDate);
